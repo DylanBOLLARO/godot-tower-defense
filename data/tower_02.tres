@@ -9,6 +9,6 @@ attackRate = 0.5
 attackDamage = 2
 attackSpeed = 0.25
 radius = 300.0
-cost = 20
+cost = 40
 sprite = ExtResource("2_o4wh5")
 metadata/_custom_type_script = "uid://bknglueyqgiqt"

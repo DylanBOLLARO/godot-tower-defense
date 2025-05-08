@@ -34,7 +34,7 @@ public partial class MapManager : Node2D
 		SetIsBuilding(false);
 
 		// dynamically connect UI tower buttons to placing logic
-		Control towersButton = GetNode<Control>("/root/Main/CanvasLayer/UI/Towers");
+		Control towersButton = GetNode<Control>("/root/Game/CanvasLayer/UI/Towers");
 
 		foreach (TowerData data in _towerData)
 		{

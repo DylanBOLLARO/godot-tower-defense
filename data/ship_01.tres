@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_lbpdg")
 speed = 1.0
-HP = 1
+HP = 5
 reward = 2
 sprite = ExtResource("2_oyugt")
 metadata/_custom_type_script = "uid://cng3tbe52ihs4"
