@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ShipData" load_steps=3 format=3 uid="uid://dbj8v25uirfh7"]
+
+[ext_resource type="Script" uid="uid://cng3tbe52ihs4" path="res://scripts/ShipData.cs" id="1_6a1lc"]
+[ext_resource type="Texture2D" uid="uid://dlj5g7c5tpdi0" path="res://assets/art/ship_03.png" id="2_e4o3r"]
+
+[resource]
+script = ExtResource("1_6a1lc")
+speed = 2.5
+HP = 2
+reward = 4
+sprite = ExtResource("2_e4o3r")
+metadata/_custom_type_script = "uid://cng3tbe52ihs4"

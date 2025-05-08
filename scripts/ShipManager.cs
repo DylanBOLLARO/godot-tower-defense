@@ -16,6 +16,15 @@ public partial class ShipManager : PathFollow2D
 		_pathFollow = GetNode<PathFollow2D>(GetPath());
 	}
 
+
+	public void Initialize(ShipData shipData)
+	{
+		_speed = shipData.speed;
+		HP = shipData.HP;
+		reward = shipData.reward;
+		GetNode<Sprite2D>("Sprite2D").Texture = shipData.sprite;
+	}
+
 	public override void _Process(double delta)
 	{
 		_pathFollow.ProgressRatio  += (float)(delta * _speed * 0.03f);

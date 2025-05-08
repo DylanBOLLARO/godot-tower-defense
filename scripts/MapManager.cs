@@ -5,6 +5,7 @@ public partial class MapManager : Node2D
 {
 	[Export] private PackedScene _shipAsset;
 	[Export] private PackedScene _towerAsset;
+	[Export] private ShipData[] _shipData;
 
 	private Path2D _path;
 	private bool _isBuilding;
@@ -43,7 +44,13 @@ public partial class MapManager : Node2D
 
 	private void _OnEnemySpawnTimerTimeout()
 	{
-		_path.AddChild(_shipAsset.Instantiate());
+		Node ship = _shipAsset.Instantiate();
+
+		Random random = new Random();
+		ShipData data = _shipData[random.Next(0,_shipData.Length)];
+
+		((ShipManager)ship).Initialize(data);
+		_path.AddChild(ship);
 	}
 
 	private Vector2 _RoundPositionToTilmap(Vector2 p)
