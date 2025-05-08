@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1q0mshwxyo5e"]
+
+[ext_resource type="Script" uid="uid://btaq4ps6bm5bb" path="res://scripts/CannonBallManager.cs" id="1_ddk8l"]
+[ext_resource type="Texture2D" uid="uid://ccc7hrss0t2hk" path="res://assets/art/cannonBall.png" id="1_hbepf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ddk8l"]
+radius = 4.66667
+
+[node name="CannonBall" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_ddk8l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hbepf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ddk8l")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnScreenExited"]
