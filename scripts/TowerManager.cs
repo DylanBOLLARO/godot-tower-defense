@@ -48,11 +48,18 @@ public partial class TowerManager : Area2D
 		}
 	}
 
-	public void Initialize(MapManager mapManager, float radius)
+	public void Initialize(MapManager mapManager, TowerData data)
 	{
 		_mapManager = mapManager;
+
+		_attackRate = data.attackRate;
+		_attackDamage = data.attackDamage;
+		_attackSpeed = data.attackSpeed;
+
+		GetNode<Sprite2D>("Base").Texture = data.sprite;
+
 		_fovAreaShape = GetNode<CollisionShape2D>("FOVArea2D/CollisionShape2D");
-		((CircleShape2D)_fovAreaShape.Shape).Radius = radius;
+		((CircleShape2D)_fovAreaShape.Shape).Radius = data.radius;
 	}
 
 	private void _OnTowerMouseEntered()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c61dsibqg3u1g"]
 
-[ext_resource type="Script" uid="uid://ceah6l4mnexs0" path="res://scripts/TowerManager.cs" id="1_hqgu6"]
-[ext_resource type="Texture2D" uid="uid://bp03lxbirt5pd" path="res://assets/art/tile_13.png" id="1_ijwnt"]
-[ext_resource type="Texture2D" uid="uid://b5h5yrtt8dfrg" path="res://assets/art/cannon.png" id="2_hqgu6"]
+[ext_resource type="Script" uid="uid://dnt1fwjtqouvk" path="res://scripts/TowerManager.cs" id="1_hqgu6"]
+[ext_resource type="Texture2D" uid="uid://bseijdxh8u6ve" path="res://assets/art/tile_13.png" id="1_ijwnt"]
+[ext_resource type="Texture2D" uid="uid://d264840xxi81r" path="res://assets/art/cannon.png" id="2_hqgu6"]
 [ext_resource type="PackedScene" uid="uid://c1q0mshwxyo5e" path="res://assets/scenes/cannon_ball.tscn" id="2_tbko6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqgu6"]

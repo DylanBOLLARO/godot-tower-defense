@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://b5b856l51agqt"]
 
-[ext_resource type="Texture2D" uid="uid://bp03lxbirt5pd" path="res://assets/art/tile_13.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://b5h5yrtt8dfrg" path="res://assets/art/cannon.png" id="2"]
-[ext_resource type="Script" uid="uid://bv5lcys74anmw" path="res://scripts/TowerToPlaceManager.cs" id="4"]
+[ext_resource type="Texture2D" uid="uid://bseijdxh8u6ve" path="res://assets/art/tile_13.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d264840xxi81r" path="res://assets/art/cannon.png" id="2"]
+[ext_resource type="Script" uid="uid://v1s3qgcgvg1s" path="res://scripts/TowerToPlaceManager.cs" id="4"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_5nxd0"]
 input_name = "texture"

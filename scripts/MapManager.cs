@@ -5,7 +5,10 @@ public partial class MapManager : Node2D
 {
 	[Export] private PackedScene _shipAsset;
 	[Export] private PackedScene _towerAsset;
+	[Export] private PackedScene _towerButtonAsset;
 	[Export] private ShipData[] _shipData;
+	[Export] private TowerData[] _towerData;
+
 
 	private Path2D _path;
 	private bool _isBuilding;
@@ -19,6 +22,7 @@ public partial class MapManager : Node2D
 
 	private bool _towerHasValidPlacement;
 	private bool _canPlaceTower;
+	private TowerData _towerToPlaceData;
 
 	public override void _Ready()
 	{
@@ -32,12 +36,17 @@ public partial class MapManager : Node2D
 		// dynamically connect UI tower buttons to placing logic
 		Control towersButton = GetNode<Control>("/root/Main/CanvasLayer/UI/Towers");
 
-		for (int i = 0; i < towersButton.GetChildCount(); i++)
+		foreach (TowerData data in _towerData)
 		{
-			Control c =(Control)towersButton.GetChild(i);
-			c.Connect(Button.SignalName.Pressed, Callable.From(_OnTowerButtonMousePressed));
+			Control c = (Control)_towerButtonAsset.Instantiate();
+			c.GetNode<TextureRect>("VBoxContainer/Control/Base").Texture = data.sprite;
+			c.GetNode<Label>("VBoxContainer/HBoxContainer/CoinsLabel").Text = $"{data.cost}";
+
+			c.Connect(Button.SignalName.Pressed, Callable.From(() => _OnTowerButtonMousePressed(data)));
+			
 			c.Connect(Button.SignalName.MouseEntered, Callable.From(_OnTowerButtonMouseEntered));
 			c.Connect(Button.SignalName.MouseExited, Callable.From(_OnTowerButtonMouseExited));
+			towersButton.AddChild(c);
 		}
 	}
 
@@ -64,7 +73,7 @@ public partial class MapManager : Node2D
 
 			if (_towerHasValidPlacement && _isBuilding && _canPlaceTower)
 			{
-				if (GameManager.instance.BuyTower())
+				if (GameManager.instance.BuyTower(_towerToPlaceData.cost))
 					_PlaceTower(_RoundPositionToTilmap(GetGlobalMousePosition()));
 			}
 		}
@@ -85,7 +94,7 @@ public partial class MapManager : Node2D
 		Node2D tower = (Node2D) _towerAsset.Instantiate();
 		tower.Position = position;
 		AddChild(tower);
-		((TowerManager)tower).Initialize(this, _towerToPlace.radius);
+		((TowerManager)tower).Initialize(this, _towerToPlaceData);
 		SetIsBuilding(false);
     }
 
@@ -105,9 +114,14 @@ public partial class MapManager : Node2D
 		else ((CanvasItem)_towerToPlace).Hide();
 	}
 
-		private void _OnTowerButtonMousePressed()
+	private void _OnTowerButtonMousePressed(TowerData data)
 	{
-		if (GameManager.instance.CanBuyTower()) SetIsBuilding(true);
+		if (GameManager.instance.CanBuyTower(data.cost))
+		{
+			_towerToPlace.SetTowerData(data);
+			_towerToPlaceData = data;
+			SetIsBuilding(true);
+		}
 	}
 
 	private void _OnTowerButtonMouseEntered()

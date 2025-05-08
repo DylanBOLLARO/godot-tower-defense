@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://b7bomyi0hrd05"]
+
+[ext_resource type="Script" uid="uid://bknglueyqgiqt" path="res://scripts/TowerData.cs" id="1_m8h5o"]
+[ext_resource type="Texture2D" uid="uid://bseijdxh8u6ve" path="res://assets/art/tile_13.png" id="2_b7v4g"]
+
+[resource]
+script = ExtResource("1_m8h5o")
+attackRate = 1.0
+attackDamage = 1
+attackSpeed = 0.25
+radius = 200.0
+cost = 10
+sprite = ExtResource("2_b7v4g")
+metadata/_custom_type_script = "uid://bknglueyqgiqt"

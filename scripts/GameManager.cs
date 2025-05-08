@@ -8,9 +8,7 @@ public partial class GameManager : Node2D
 
 	private Label _coinsLabel;
 	private Label _livesLabel;
-	private const int _TOWER_COST = 20;
-
-	private int _coins = 40;
+	private int _coins = 20;
 	private int _lives = 50;
 
 	public override void _Ready()
@@ -28,11 +26,11 @@ public partial class GameManager : Node2D
 		_livesLabel.Text = $"{_lives}";
 	}
 
-	public bool BuyTower()
+	public bool BuyTower(int cost)
 	{
-		if (_coins < _TOWER_COST) return false;
+		if (_coins < cost) return false;
 
-		_coins -= _TOWER_COST;
+		_coins -= cost;
 		_UpdateUI();
 		return true;
 
@@ -44,9 +42,9 @@ public partial class GameManager : Node2D
 		_UpdateUI();
 	}
 
-	public bool CanBuyTower()
+	public bool CanBuyTower(int cost)
 	{
-		return _coins >= _TOWER_COST;
+		return _coins >= cost;
 	}
 
 	public void OnShipDied(ShipManager ship)
