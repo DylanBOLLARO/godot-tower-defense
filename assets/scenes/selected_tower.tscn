@@ -3,14 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://dpbson3he4f5x" path="res://assets/art/tile_13_2.png" id="1_6uiqu"]
 
 [node name="SelectedTower" type="Control"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1735.0
-offset_bottom = -901.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_right = 0.104
+anchor_bottom = 0.185
+offset_right = 0.319992
+offset_bottom = 0.199997
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -27,9 +25,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Damage" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/Damage"]
 layout_mode = 2
@@ -43,6 +43,7 @@ text = "2"
 
 [node name="Rate" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/Rate"]
 layout_mode = 2
@@ -55,7 +56,8 @@ theme_override_font_sizes/font_size = 30
 text = "1"
 
 [node name="Sprite" type="TextureRect" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("1_6uiqu")
-stretch_mode = 2
+expand_mode = 1

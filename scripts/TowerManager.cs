@@ -65,14 +65,18 @@ public partial class TowerManager : Area2D
 
 	public override void _Input(InputEvent @event)
 	{
-		if(@event is InputEventMouseButton eventMouseButton && (int)eventMouseButton.ButtonIndex == (int)MouseButton.Left && !eventMouseButton.Pressed)
+		if(@event is InputEventMouseButton eventMouseButton)
 		{
 			Control selectedTowerUI = GetNode<Control>("/root/Game/CanvasLayer/UI/SelectedTower");
 
-			if (_canBeSelected){
-				((Label)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Damage/DamageLabel")).Text = $"{_attackDamage}";
-				((Label)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Rate/RateLabel")).Text = $"{_attackRate}";
-				((TextureRect)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Sprite")).Texture = GetNode<Sprite2D>("Base").Texture;
+			if ((int)eventMouseButton.ButtonIndex == (int)MouseButton.Left && !eventMouseButton.Pressed)
+			{
+
+				if (_canBeSelected){
+					((Label)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Damage/DamageLabel")).Text = $"{_attackDamage}";
+					((Label)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Rate/RateLabel")).Text = $"{_attackRate}";
+					((TextureRect)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Sprite")).Texture = GetNode<Sprite2D>("Base").Texture;
+				} 
 			}
 		}
 	}

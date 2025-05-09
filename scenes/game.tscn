@@ -119,7 +119,7 @@ theme_override_constants/separation = 20
 
 [node name="SelectedTower" parent="CanvasLayer/UI" instance=ExtResource("5_iywne")]
 layout_mode = 1
-offset_left = 985.0
-offset_top = 966.0
-offset_right = 985.0
-offset_bottom = 966.0
+offset_left = 1696.0
+offset_top = 705.0
+offset_right = 1896.0
+offset_bottom = 905.0
