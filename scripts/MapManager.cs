@@ -34,18 +34,18 @@ public partial class MapManager : Node2D
 		SetIsBuilding(false);
 
 		// dynamically connect UI tower buttons to placing logic
-		Control towersButton = GetNode<Control>("/root/Game/CanvasLayer/UI/Towers");
+		Control towersButton = GetNode<Control>("/root/Game/CanvasLayer/UI/CreateTowerButtons/VBoxContainer");
 
 		foreach (TowerData data in _towerData)
 		{
-			Control c = (Control)_towerButtonAsset.Instantiate();
-			c.GetNode<TextureRect>("VBoxContainer/Control/Base").Texture = data.sprite;
-			c.GetNode<Label>("VBoxContainer/HBoxContainer/CoinsLabel").Text = $"{data.cost}";
+			TextureButton c = (TextureButton)_towerButtonAsset.Instantiate();
+			c.GetNode<TextureRect>("Control/Base").Texture = data.sprite;
+			c.GetNode<Label>("CoinsLabel").Text = $"{data.cost}";
 
-			c.Connect(Button.SignalName.Pressed, Callable.From(() => _OnTowerButtonMousePressed(data)));
-			
-			c.Connect(Button.SignalName.MouseEntered, Callable.From(_OnTowerButtonMouseEntered));
-			c.Connect(Button.SignalName.MouseExited, Callable.From(_OnTowerButtonMouseExited));
+			c.Connect(TextureButton.SignalName.Pressed, Callable.From(() => _OnTowerButtonMousePressed(data)));
+			c.Connect(TextureButton.SignalName.MouseEntered, Callable.From(_OnTowerButtonMouseEntered));
+			c.Connect(TextureButton.SignalName.MouseExited, Callable.From(_OnTowerButtonMouseExited));
+
 			towersButton.AddChild(c);
 		}
 	}

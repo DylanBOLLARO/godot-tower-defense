@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqucv4n057gpk"]
+[gd_scene load_steps=8 format=3 uid="uid://dqucv4n057gpk"]
 
 [ext_resource type="Script" uid="uid://dkkrsowc0m2be" path="res://scripts/GameManager.cs" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://by03opvikbu1f" path="res://scenes/map_01.tscn" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://cpvn7bcq3u0lk" path="res://assets/art/coinGold.png" id="3_p57ef"]
+[ext_resource type="Texture2D" uid="uid://cougdia6i4b2o" path="res://assets/art/bg_rect_black.png" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://bmvwponlwaq6r" path="res://assets/art/heart.png" id="4_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://ck2vjp063dqt4" path="res://assets/scenes/selected_tower.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://b3ga0chxq0lb7" path="res://assets/scenes/create_tower_buttons.tscn" id="7_u5sy4"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -27,19 +29,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="CoinsBG" type="ColorRect" parent="CanvasLayer/UI"]
+[node name="CoinsBG" type="TextureRect" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1588.0
-offset_top = 27.0
-offset_right = 1716.0
-offset_bottom = 91.0
+offset_left = 1648.0
+offset_top = 8.0
+offset_right = 1776.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.470588)
+texture = ExtResource("4_p57ef")
 metadata/_edit_group_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/CoinsBG"]
@@ -68,29 +70,26 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "000"
 
-[node name="LivesBG" type="ColorRect" parent="CanvasLayer/UI"]
-custom_minimum_size = Vector2(128, 64)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1752.0
-offset_top = 27.0
-offset_right = 1880.0
-offset_bottom = 91.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.470588)
+[node name="LivesBG" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 1785.0
+offset_top = 8.0
+offset_right = 1913.0
+offset_bottom = 72.0
+texture = ExtResource("4_p57ef")
 metadata/_edit_group_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/LivesBG"]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -51.5
+offset_top = -24.0
 offset_right = 51.5
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -109,17 +108,17 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "000"
 
-[node name="Towers" type="HBoxContainer" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 1349.0
-offset_top = 915.0
-offset_right = 1893.0
-offset_bottom = 1051.0
-theme_override_constants/separation = 20
-
-[node name="SelectedTower" parent="CanvasLayer/UI" instance=ExtResource("5_iywne")]
+[node name="Information" parent="CanvasLayer/UI" instance=ExtResource("5_iywne")]
 layout_mode = 1
-offset_left = 1696.0
-offset_top = 705.0
-offset_right = 1896.0
-offset_bottom = 905.0
+offset_left = 1589.0
+offset_top = 898.0
+offset_right = 1589.0
+offset_bottom = 898.0
+
+[node name="CreateTowerButtons" parent="CanvasLayer/UI" instance=ExtResource("7_u5sy4")]
+layout_mode = 1
+offset_left = 1780.0
+offset_top = 349.0
+offset_right = 1864.0
+offset_bottom = 708.0
+scale = Vector2(1.5, 1.5)
