@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqucv4n057gpk"]
+[gd_scene load_steps=6 format=3 uid="uid://dqucv4n057gpk"]
 
 [ext_resource type="Script" uid="uid://dkkrsowc0m2be" path="res://scripts/GameManager.cs" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://by03opvikbu1f" path="res://scenes/map_01.tscn" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://cpvn7bcq3u0lk" path="res://assets/art/coinGold.png" id="3_p57ef"]
 [ext_resource type="Texture2D" uid="uid://bmvwponlwaq6r" path="res://assets/art/heart.png" id="4_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://ck2vjp063dqt4" path="res://assets/scenes/selected_tower.tscn" id="5_iywne"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -115,3 +116,10 @@ offset_top = 915.0
 offset_right = 1893.0
 offset_bottom = 1051.0
 theme_override_constants/separation = 20
+
+[node name="SelectedTower" parent="CanvasLayer/UI" instance=ExtResource("5_iywne")]
+layout_mode = 1
+offset_left = 985.0
+offset_top = 966.0
+offset_right = 985.0
+offset_bottom = 966.0

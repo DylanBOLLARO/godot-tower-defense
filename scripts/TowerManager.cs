@@ -20,6 +20,7 @@ public partial class TowerManager : Area2D
 	private int _attackDamage = 1;
 	private float _attackSpeed = 0.25f;
 	private float _attackDelay;
+	private bool _canBeSelected;
 
 
 	public override void _Ready()
@@ -62,13 +63,29 @@ public partial class TowerManager : Area2D
 		((CircleShape2D)_fovAreaShape.Shape).Radius = data.radius;
 	}
 
+	public override void _Input(InputEvent @event)
+	{
+		if(@event is InputEventMouseButton eventMouseButton && (int)eventMouseButton.ButtonIndex == (int)MouseButton.Left && !eventMouseButton.Pressed)
+		{
+			Control selectedTowerUI = GetNode<Control>("/root/Game/CanvasLayer/UI/SelectedTower");
+
+			if (_canBeSelected){
+				((Label)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Damage/DamageLabel")).Text = $"{_attackDamage}";
+				((Label)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Rate/RateLabel")).Text = $"{_attackRate}";
+				((TextureRect)selectedTowerUI.GetNode<Control>("Panel/VBoxContainer/Sprite")).Texture = GetNode<Sprite2D>("Base").Texture;
+			}
+		}
+	}
+
 	private void _OnTowerMouseEntered()
 	{
+		_canBeSelected = true;
 		_mapManager.SetCanPlaceTower(false);
 	}
 
 	private void _OnTowerMouseExited()
 	{
+		_canBeSelected = false;
 		_mapManager.SetCanPlaceTower(true);
 	}
 

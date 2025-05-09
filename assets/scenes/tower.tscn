@@ -9,7 +9,7 @@
 radius = 138.177
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqgu6"]
-size = Vector2(63, 64)
+size = Vector2(64, 64)
 
 [node name="Tower" type="Area2D"]
 script = ExtResource("1_hqgu6")
@@ -29,7 +29,6 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_hqgu6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_hqgu6")
 
 [connection signal="mouse_entered" from="." to="." method="_OnTowerMouseEntered"]

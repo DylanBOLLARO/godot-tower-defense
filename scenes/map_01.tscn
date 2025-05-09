@@ -1838,6 +1838,5 @@ wait_time = 2.0
 autostart = true
 
 [node name="Tower-ToPlace" parent="." instance=ExtResource("6_22d4a")]
-position = Vector2(714, 327)
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_OnEnemySpawnTimerTimeout"]

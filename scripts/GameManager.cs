@@ -8,7 +8,7 @@ public partial class GameManager : Node2D
 
 	private Label _coinsLabel;
 	private Label _livesLabel;
-	private int _coins = 20;
+	private int _coins = 100;
 	private int _lives = 50;
 
 	public override void _Ready()
