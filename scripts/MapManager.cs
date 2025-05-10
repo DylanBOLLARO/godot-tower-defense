@@ -7,6 +7,8 @@ public partial class MapManager : Node2D
 	[Export] private PackedScene _shipAsset;
 	[Export] private PackedScene _towerAsset;
 	[Export] private PackedScene _towerButtonAsset;
+	[Export] private PackedScene _towerInformation;
+	[Export] private PackedScene _shipInformation;
 	[Export] private ShipData[] _shipData;
 	[Export] private TowerData[] _towerData;
 
@@ -30,35 +32,40 @@ public partial class MapManager : Node2D
 
 	public void SetCurrentSelect(Node2D select)
 	{
-		Dictionary<string, int> _openWith = new Dictionary<string, int>
-        {
-            { "TowerManager", 0 },
-            { "ShipManager", 1 }
-        };
-
 		_currentSelect = select;
 
-		if (_openWith.TryGetValue(select.GetType().Name, out int value))
+		TextureRect UI_information = GetNode<TextureRect>("/root/Game/CanvasLayer/UI/Information");
+
+		foreach (Node child in UI_information.GetChildren())
+		{
+			child.QueueFree();
+		}
+
+		if (GameData.TYPES_ENUM.TryGetValue(select.GetType().Name, out int value))
 		{
 			switch (value)
 			{
 				case 0:
 					TowerManager tower = (TowerManager)select;
+
+					Node towerInformation = _towerInformation.Instantiate();
+					UI_information.AddChild(towerInformation);
+
 					GD.Print("Damage : ", tower.Get("_attackDamage"));
 					GD.Print("Rate : ", tower.Get("_attackRate"));
 					break;
 
 				case 1:
 					ShipManager ship = (ShipManager)select;
-					GD.Print("HP : ", ship.Get("HP"));
-					GD.Print("reward : ", ship.Get("reward"));
+					Node shipInformation = _shipInformation.Instantiate();
+					((ShipInformation)shipInformation).Initialize(ship);
+					UI_information.AddChild(shipInformation);
 					break;
 
 				default:
 					break;
 			}
 		}
-
 	}
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://by03opvikbu1f"]
+[gd_scene load_steps=24 format=4 uid="uid://by03opvikbu1f"]
 
 [ext_resource type="Script" uid="uid://c5aducwdu6km2" path="res://scripts/MapManager.cs" id="1_0mqyo"]
 [ext_resource type="Texture2D" uid="uid://b246exjsmofot" path="res://assets/tiles/tiles_sheet.png" id="1_gs3qo"]
@@ -7,9 +7,11 @@
 [ext_resource type="Script" uid="uid://dx3domdxcn63a" path="res://scripts/MapPathDisplay.cs" id="4_brvm5"]
 [ext_resource type="Resource" uid="uid://b5wdpjfm086on" path="res://data/ship_01.tres" id="4_i40je"]
 [ext_resource type="PackedScene" uid="uid://5okck1ayloro" path="res://assets/scenes/tower_button.tscn" id="4_rhv8t"]
+[ext_resource type="PackedScene" uid="uid://dv73i0d1vhrxx" path="res://assets/scenes/ui_information/tower_information.tscn" id="5_6pepm"]
 [ext_resource type="Resource" uid="uid://d1ptvr3qrhoi8" path="res://data/ship_02.tres" id="5_q5owf"]
 [ext_resource type="Resource" uid="uid://dbj8v25uirfh7" path="res://data/ship_03.tres" id="6_8k8sd"]
 [ext_resource type="PackedScene" uid="uid://b5b856l51agqt" path="res://assets/scenes/Tower-ToPlace.tscn" id="6_22d4a"]
+[ext_resource type="PackedScene" uid="uid://beqbm7dlgeu1i" path="res://assets/scenes/ui_information/ship_information.tscn" id="6_cpvo5"]
 [ext_resource type="Resource" uid="uid://b7bomyi0hrd05" path="res://data/tower_01.tres" id="7_8k8sd"]
 [ext_resource type="Resource" uid="uid://b7g7ygclkuu1c" path="res://data/tower_02.tres" id="8_rhv8t"]
 
@@ -1806,6 +1808,8 @@ script = ExtResource("1_0mqyo")
 _shipAsset = ExtResource("2_a3cfv")
 _towerAsset = ExtResource("3_22d4a")
 _towerButtonAsset = ExtResource("4_rhv8t")
+_towerInformation = ExtResource("5_6pepm")
+_shipInformation = ExtResource("6_cpvo5")
 _shipData = Array[Object]([ExtResource("4_i40je"), ExtResource("5_q5owf"), ExtResource("6_8k8sd")])
 _towerData = Array[Object]([ExtResource("7_8k8sd"), ExtResource("8_rhv8t")])
 

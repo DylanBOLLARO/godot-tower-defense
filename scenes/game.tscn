@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cpvn7bcq3u0lk" path="res://assets/art/coinGold.png" id="3_p57ef"]
 [ext_resource type="Texture2D" uid="uid://cougdia6i4b2o" path="res://assets/art/bg_rect_black.png" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://bmvwponlwaq6r" path="res://assets/art/heart.png" id="4_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://ck2vjp063dqt4" path="res://assets/scenes/selected_tower.tscn" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://cn4labe6r8i0p" path="res://assets/art/ui_info.png" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://b3ga0chxq0lb7" path="res://assets/scenes/create_tower_buttons.tscn" id="7_u5sy4"]
 
 [node name="Game" type="Node2D"]
@@ -108,14 +108,6 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "000"
 
-[node name="Information" parent="CanvasLayer/UI" instance=ExtResource("5_iywne")]
-layout_mode = 1
-offset_left = 1524.0
-offset_top = 863.0
-offset_right = 1524.0
-offset_bottom = 863.0
-scale = Vector2(1.2, 1.2)
-
 [node name="CreateTowerButtons" parent="CanvasLayer/UI" instance=ExtResource("7_u5sy4")]
 layout_mode = 1
 offset_left = 1789.0
@@ -123,3 +115,12 @@ offset_top = 349.0
 offset_right = 1873.0
 offset_bottom = 708.0
 scale = Vector2(1.5, 1.5)
+
+[node name="Information" type="TextureRect" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 1491.0
+offset_top = 845.0
+offset_right = 1817.0
+offset_bottom = 1022.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("7_gee14")

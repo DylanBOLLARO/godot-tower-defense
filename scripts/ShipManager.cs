@@ -9,9 +9,13 @@ public partial class ShipManager : PathFollow2D
 	// ship parameters
 	private float _speed = 1f;
 	public int HP = 1;
+	public Texture2D sprite = null;
 	public int reward = 5;
 	private MapManager _mapManager;
 	private bool _canBeSelected;
+
+	public string name;
+
 
 	public override void _Ready()
 	{
@@ -38,6 +42,7 @@ public partial class ShipManager : PathFollow2D
 		_speed = shipData.speed;
 		HP = shipData.HP;
 		reward = shipData.reward;
+		name = shipData.name;
 		GetNode<Sprite2D>("Sprite2D").Texture = shipData.sprite;
 	}
 

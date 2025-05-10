@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cocyy2ifd3qi8"]
+
+[ext_resource type="Texture2D" uid="uid://cn4labe6r8i0p" path="res://assets/art/ui_info.png" id="1_mcqbk"]
+[ext_resource type="Texture2D" uid="uid://dlj5g7c5tpdi0" path="res://assets/art/ship_03.png" id="2_fop11"]
+
+[node name="BaseInformation" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="mockUiInformation" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 326.0
+offset_bottom = 177.0
+texture = ExtResource("1_mcqbk")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 6.0
+offset_right = 308.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.784314)
+text = "ShipInformation"
+vertical_alignment = 1
+
+[node name="Sprite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 55.0
+offset_right = 92.0
+offset_bottom = 168.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_fop11")
+
+[node name="Stats" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 51.0
+offset_right = 210.0
+offset_bottom = 149.0
+theme_override_constants/separation = 0
