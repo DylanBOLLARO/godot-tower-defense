@@ -14,6 +14,9 @@ public partial class TowerManager : Area2D
 
 	private Node2D _currentTarget;
 
+	public string name;
+
+
 
 	// tower parameters
 	private float _attackRate = 1f;
@@ -56,7 +59,7 @@ public partial class TowerManager : Area2D
 		_attackRate = data.attackRate;
 		_attackDamage = data.attackDamage;
 		_attackSpeed = data.attackSpeed;
-
+		name = data.name;
 		GetNode<Sprite2D>("Base").Texture = data.sprite;
 
 		_fovAreaShape = GetNode<CollisionShape2D>("FOVArea2D/CollisionShape2D");

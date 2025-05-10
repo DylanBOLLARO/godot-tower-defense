@@ -32,6 +32,7 @@ offset_right = 92.0
 offset_bottom = 168.0
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_fop11")
+stretch_mode = 2
 
 [node name="Stats" type="VBoxContainer" parent="."]
 layout_mode = 0

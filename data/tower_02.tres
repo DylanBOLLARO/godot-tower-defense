@@ -11,4 +11,5 @@ attackSpeed = 0.25
 radius = 300.0
 cost = 40
 sprite = ExtResource("2_o4wh5")
+name = "Canon T2"
 metadata/_custom_type_script = "uid://bknglueyqgiqt"

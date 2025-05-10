@@ -47,12 +47,9 @@ public partial class MapManager : Node2D
 			{
 				case 0:
 					TowerManager tower = (TowerManager)select;
-
 					Node towerInformation = _towerInformation.Instantiate();
+					((TowerInformation)towerInformation).Initialize(tower);
 					UI_information.AddChild(towerInformation);
-
-					GD.Print("Damage : ", tower.Get("_attackDamage"));
-					GD.Print("Rate : ", tower.Get("_attackRate"));
 					break;
 
 				case 1:
