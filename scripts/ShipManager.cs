@@ -10,15 +10,31 @@ public partial class ShipManager : PathFollow2D
 	private float _speed = 1f;
 	public int HP = 1;
 	public int reward = 5;
+	private MapManager _mapManager;
+	private bool _canBeSelected;
 
 	public override void _Ready()
 	{
 		_pathFollow = GetNode<PathFollow2D>(GetPath());
 	}
 
-
-	public void Initialize(ShipData shipData)
+	public override void _Input(InputEvent @event)
 	{
+		if(@event is InputEventMouseButton eventMouseButton)
+		{
+			if ((int)eventMouseButton.ButtonIndex == (int)MouseButton.Left && !eventMouseButton.Pressed)
+			{
+				if (_canBeSelected)
+				{
+					_mapManager.SetCurrentSelect(this);
+				}
+			}
+		}
+	}
+
+	public void Initialize(MapManager mapManager, ShipData shipData)
+	{
+		_mapManager = mapManager;
 		_speed = shipData.speed;
 		HP = shipData.HP;
 		reward = shipData.reward;
@@ -58,5 +74,15 @@ public partial class ShipManager : PathFollow2D
 	{
 		GameManager.instance.OnShipDied(this);
 		QueueFree();
+	}
+
+	private void _OnMouseEntered()
+	{
+		_canBeSelected = true;
+	}
+
+	private void _OnMouseExited()
+	{
+		_canBeSelected = false;
 	}
 }

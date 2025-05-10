@@ -110,15 +110,16 @@ text = "000"
 
 [node name="Information" parent="CanvasLayer/UI" instance=ExtResource("5_iywne")]
 layout_mode = 1
-offset_left = 1589.0
-offset_top = 898.0
-offset_right = 1589.0
-offset_bottom = 898.0
+offset_left = 1524.0
+offset_top = 863.0
+offset_right = 1524.0
+offset_bottom = 863.0
+scale = Vector2(1.2, 1.2)
 
 [node name="CreateTowerButtons" parent="CanvasLayer/UI" instance=ExtResource("7_u5sy4")]
 layout_mode = 1
-offset_left = 1780.0
+offset_left = 1789.0
 offset_top = 349.0
-offset_right = 1864.0
+offset_right = 1873.0
 offset_bottom = 708.0
 scale = Vector2(1.5, 1.5)

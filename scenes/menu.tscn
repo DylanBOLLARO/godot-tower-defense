@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbjwxu2q71660"]
 
-[ext_resource type="Script" uid="uid://dt32ttydrsf1l" path="res://scenes/Menu.cs" id="1_con2f"]
+[ext_resource type="Script" uid="uid://dt32ttydrsf1l" path="res://scripts/Menu.cs" id="1_con2f"]
 [ext_resource type="Texture2D" uid="uid://2ue6wrfbo1gs" path="res://assets/ui/BackGround.png" id="1_yqeox"]
 [ext_resource type="Texture2D" uid="uid://l48s2s2wt024" path="res://assets/ui/button_rectangle_gradient.png" id="2_vjb58"]
 

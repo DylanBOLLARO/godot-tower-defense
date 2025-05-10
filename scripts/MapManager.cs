@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class MapManager : Node2D
 {
@@ -23,6 +24,43 @@ public partial class MapManager : Node2D
 	private bool _towerHasValidPlacement;
 	private bool _canPlaceTower;
 	private TowerData _towerToPlaceData;
+	private Node2D _currentSelect;
+
+
+
+	public void SetCurrentSelect(Node2D select)
+	{
+		Dictionary<string, int> _openWith = new Dictionary<string, int>
+        {
+            { "TowerManager", 0 },
+            { "ShipManager", 1 }
+        };
+
+		_currentSelect = select;
+
+		if (_openWith.TryGetValue(select.GetType().Name, out int value))
+		{
+			switch (value)
+			{
+				case 0:
+					TowerManager tower = (TowerManager)select;
+					GD.Print("Damage : ", tower.Get("_attackDamage"));
+					GD.Print("Rate : ", tower.Get("_attackRate"));
+					break;
+
+				case 1:
+					ShipManager ship = (ShipManager)select;
+					GD.Print("HP : ", ship.Get("HP"));
+					GD.Print("reward : ", ship.Get("reward"));
+					break;
+
+				default:
+					break;
+			}
+		}
+
+	}
+
 
 	public override void _Ready()
 	{
@@ -58,7 +96,7 @@ public partial class MapManager : Node2D
 		Random random = new Random();
 		ShipData data = _shipData[random.Next(0,_shipData.Length)];
 
-		((ShipManager)ship).Initialize(data);
+		((ShipManager)ship).Initialize(this, data);
 		_path.AddChild(ship);
 	}
 
@@ -69,20 +107,36 @@ public partial class MapManager : Node2D
 
 	public override void _Input(InputEvent @event)
 	{
-		if(@event is InputEventMouseButton eventMouseButton && (int)eventMouseButton.ButtonIndex == 1 && !eventMouseButton.Pressed){
+		Vector2 mousePosition = GetGlobalMousePosition();
 
-			if (_towerHasValidPlacement && _isBuilding && _canPlaceTower)
-			{
-				if (GameManager.instance.BuyTower(_towerToPlaceData.cost))
-					_PlaceTower(_RoundPositionToTilmap(GetGlobalMousePosition()));
-			}
-		}
-		else if (@event is InputEventMouseMotion eventMouseMotion)
+		// handle click
+		if(@event is InputEventMouseButton eventMouseButton )
 		{
-			Vector2 mousePosition = GetGlobalMousePosition();
-			_towerToPlace.Position = _RoundPositionToTilmap(mousePosition);
+			// handle left click
+			if ((int)eventMouseButton.ButtonIndex == (int)MouseButton.Left && !eventMouseButton.Pressed)
+			{
+				if (_towerHasValidPlacement && _isBuilding && _canPlaceTower)
+				{
+					if (GameManager.instance.BuyTower(_towerToPlaceData.cost))
+					{
+						_PlaceTower(_RoundPositionToTilmap(mousePosition));
+					}
+				}
+			}
+			// handle right click
+			if ((int)eventMouseButton.ButtonIndex == (int)MouseButton.Right && !eventMouseButton.Pressed)
+			{
+				// can be selected -> _currentSelect
+				Rect2 rect = new Rect2(new Vector2(0,0),new Vector2(128,128));
+				if (rect.HasPoint(mousePosition)) GD.Print("yes");
+			}	
+		}
 
+		// handle movement
+		if (@event is InputEventMouseMotion eventMouseMotion)
+		{
 			// check tower has valid placement
+			_towerToPlace.Position = _RoundPositionToTilmap(mousePosition);
 			Vector2I cellPos = _groundTilemap.LocalToMap(_towerToPlace.Position);
 			_towerHasValidPlacement = _groundTilemap.GetCellSourceId(cellPos) != -1;
 			_towerToPlace.SetValid(_towerHasValidPlacement);

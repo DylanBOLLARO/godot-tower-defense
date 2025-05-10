@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd3qasl3wt4wa"]
+[gd_scene load_steps=5 format=3 uid="uid://dd3qasl3wt4wa"]
 
-[ext_resource type="Script" uid="uid://do7ajft04rh3y" path="res://scripts/ShipManager.cs" id="1_aww27"]
-[ext_resource type="Texture2D" uid="uid://b6vhlbui63w2q" path="res://assets/art/ship_01.png" id="1_oecdx"]
+[ext_resource type="Script" uid="uid://bwg71hje8kq8h" path="res://scripts/ShipManager.cs" id="1_aww27"]
+[ext_resource type="Texture2D" uid="uid://cv2167bh040j0" path="res://assets/art/ship_01.png" id="1_oecdx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oecdx"]
-radius = 15.0
-height = 88.0
+radius = 14.0
+height = 72.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aww27"]
+radius = 33.0
+height = 114.0
 
 [node name="Ship" type="PathFollow2D"]
 loop = false
@@ -23,5 +27,13 @@ collision_mask = 2
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_oecdx")
 
+[node name="SelectShape" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectShape"]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_aww27")
+
 [connection signal="body_entered" from="Area2D" to="." method="_OnArea2dBodyEntered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_OnArea2dBodyEntered"]
+[connection signal="mouse_entered" from="SelectShape" to="." method="_OnMouseEntered"]
+[connection signal="mouse_exited" from="SelectShape" to="." method="_OnMouseExited"]
