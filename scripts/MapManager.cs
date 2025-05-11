@@ -120,6 +120,7 @@ public partial class MapManager : Node2D
 		AddChild(tower);
 		((TowerManager)tower).Initialize(this, _towerToPlaceData);
 		SetIsBuilding(false);
+		SetCurrentSelect(tower);
     }
 
     public void SetIsBuilding(bool isBuilding)

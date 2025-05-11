@@ -36,6 +36,8 @@ public partial class TowerManager : Area2D
 
 	public override void _Process(double delta)
 	{
+		QueueRedraw();
+
 		if (_currentTarget != null)
 		{
 			_canonSprite.LookAt(_currentTarget.Position);
@@ -120,7 +122,9 @@ public partial class TowerManager : Area2D
 
 	public override void _Draw()
 	{
-		DrawCircle(new Vector2(0,0),35f,new Color(0,0,1,1), false, 1, true);
-		DrawCircle(new Vector2(0,0),35f,new Color(0,0,1,(float)0.2));
+		if ((TowerManager)_mapManager.Get("_currentSelect") == this){
+			DrawCircle(new Vector2(0,0),35f,new Color(0,0,1,1), false, 1, true);
+			DrawCircle(new Vector2(0,0),35f,new Color(0,0,1,(float)0.2));
+		}
 	}
 }
