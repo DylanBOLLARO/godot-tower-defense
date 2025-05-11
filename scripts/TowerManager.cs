@@ -70,28 +70,23 @@ public partial class TowerManager : Area2D
 	{
 		if(@event is InputEventMouseButton eventMouseButton)
 		{
-			Control selectedTowerUI = GetNode<Control>("/root/Game/CanvasLayer/UI/Information");
-
 			if ((int)eventMouseButton.ButtonIndex == (int)MouseButton.Left && !eventMouseButton.Pressed)
 			{
-				if (_canBeSelected){
-					_mapManager.SetCurrentSelect(this);
-					((Label)selectedTowerUI.GetNode<Control>("TextureRect/VBoxContainer/VBoxContainer/Damage/DamageLabel")).Text = $"{_attackDamage}";
-					((Label)selectedTowerUI.GetNode<Control>("TextureRect/VBoxContainer/VBoxContainer/Rate/RateLabel")).Text = $"{_attackRate}";
-					((TextureRect)selectedTowerUI.GetNode<Control>("TextureRect/VBoxContainer/Sprite")).Texture = GetNode<Sprite2D>("Base").Texture;
-				} 
+				if (_canBeSelected) _mapManager.SetCurrentSelect(this);
 			}
 		}
 	}
 
 	private void _OnTowerMouseEntered()
 	{
+		GameManager.SetSelectedCursor();
 		_canBeSelected = true;
 		_mapManager.SetCanPlaceTower(false);
 	}
 
 	private void _OnTowerMouseExited()
 	{
+		GameManager.SetBaseCursor();
 		_canBeSelected = false;
 		_mapManager.SetCanPlaceTower(true);
 	}
@@ -121,5 +116,11 @@ public partial class TowerManager : Area2D
 		Vector2 velocity = (offsettedTarged - Position).Normalized();
 		cannonBall.Initialize(velocity, _attackDamage, _attackSpeed);
 		GetTree().Root.AddChild(cannonBall);
+	}
+
+	public override void _Draw()
+	{
+		DrawCircle(new Vector2(0,0),35f,new Color(0,0,1,1), false, 1, true);
+		DrawCircle(new Vector2(0,0),35f,new Color(0,0,1,(float)0.2));
 	}
 }

@@ -28,10 +28,7 @@ public partial class ShipManager : PathFollow2D
 		{
 			if ((int)eventMouseButton.ButtonIndex == (int)MouseButton.Left && !eventMouseButton.Pressed)
 			{
-				if (_canBeSelected)
-				{
-					_mapManager.SetCurrentSelect(this);
-				}
+				if (_canBeSelected) _mapManager.SetCurrentSelect(this);
 			}
 		}
 	}

@@ -5,16 +5,20 @@ public partial class GameManager : Node2D
 {
 	public static GameManager instance;
 
+	[Export] private PackedScene _towerInformation;
+	[Export] private PackedScene _shipInformation;
 
 	private Label _coinsLabel;
 	private Label _livesLabel;
 	private int _coins = 100;
 	private int _lives = 50;
+	private TextureRect _ui_information;
 
 	public override void _Ready()
 	{
 		instance = this;
 
+		_ui_information = GetNode<TextureRect>("/root/Game/CanvasLayer/UI/Information");
 		_coinsLabel = GetNode<Label>("CanvasLayer/UI/CoinsBG/HBoxContainer/CoinsLabel");
 		_livesLabel = GetNode<Label>("CanvasLayer/UI/LivesBG/HBoxContainer/LivesLabel");
 
@@ -24,6 +28,44 @@ public partial class GameManager : Node2D
 	{
 		_coinsLabel.Text = $"{_coins}";
 		_livesLabel.Text = $"{_lives}";
+	}
+
+	private void _ResetUiInformation()
+	{
+		foreach (Node child in _ui_information.GetChildren())
+		{
+			child.QueueFree();
+		}
+	}
+
+	public void UpdateInformation(Node2D data)
+	{
+		_ResetUiInformation();
+
+		if (data == null) return;
+
+		if (GameData.TYPES_ENUM.TryGetValue(data.GetType().Name, out int value))
+		{
+			switch (value)
+			{
+				case 0:
+					TowerManager tower = (TowerManager)data;
+					Node towerInformation = _towerInformation.Instantiate();
+					((TowerInformation)towerInformation).Initialize(tower);
+					_ui_information.AddChild(towerInformation);
+					break;
+
+				case 1:
+					ShipManager ship = (ShipManager)data;
+					Node shipInformation = _shipInformation.Instantiate();
+					((ShipInformation)shipInformation).Initialize(ship);
+					_ui_information.AddChild(shipInformation);
+					break;
+
+				default:
+					break;
+			}
+		}
 	}
 
 	public bool BuyTower(int cost)
@@ -53,4 +95,15 @@ public partial class GameManager : Node2D
 		_UpdateUI();
 	}
 
+	public static void SetSelectedCursor()
+	{
+        var arrow = ResourceLoader.Load("res://assets/art/crosshair_b.png");
+        Input.SetCustomMouseCursor(arrow);
+	}
+
+	public static void SetBaseCursor()
+	{
+        var arrow = ResourceLoader.Load("res://assets/art/cursor_g.png");
+        Input.SetCustomMouseCursor(arrow);
+	}
 }

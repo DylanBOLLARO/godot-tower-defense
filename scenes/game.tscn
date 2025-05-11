@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqucv4n057gpk"]
+[gd_scene load_steps=10 format=3 uid="uid://dqucv4n057gpk"]
 
 [ext_resource type="Script" uid="uid://dkkrsowc0m2be" path="res://scripts/GameManager.cs" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dv73i0d1vhrxx" path="res://assets/scenes/ui_information/tower_information.tscn" id="2_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://by03opvikbu1f" path="res://scenes/map_01.tscn" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://cpvn7bcq3u0lk" path="res://assets/art/coinGold.png" id="3_p57ef"]
+[ext_resource type="PackedScene" uid="uid://beqbm7dlgeu1i" path="res://assets/scenes/ui_information/ship_information.tscn" id="3_vtaks"]
 [ext_resource type="Texture2D" uid="uid://cougdia6i4b2o" path="res://assets/art/bg_rect_black.png" id="4_p57ef"]
 [ext_resource type="Texture2D" uid="uid://bmvwponlwaq6r" path="res://assets/art/heart.png" id="4_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://cn4labe6r8i0p" path="res://assets/art/ui_info.png" id="7_gee14"]
@@ -10,6 +12,8 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
+_towerInformation = ExtResource("2_0tnpc")
+_shipInformation = ExtResource("3_vtaks")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

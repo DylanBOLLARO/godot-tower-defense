@@ -7,8 +7,7 @@ public partial class MapManager : Node2D
 	[Export] private PackedScene _shipAsset;
 	[Export] private PackedScene _towerAsset;
 	[Export] private PackedScene _towerButtonAsset;
-	[Export] private PackedScene _towerInformation;
-	[Export] private PackedScene _shipInformation;
+
 	[Export] private ShipData[] _shipData;
 	[Export] private TowerData[] _towerData;
 
@@ -33,38 +32,7 @@ public partial class MapManager : Node2D
 	public void SetCurrentSelect(Node2D select)
 	{
 		_currentSelect = select;
-
-		TextureRect UI_information = GetNode<TextureRect>("/root/Game/CanvasLayer/UI/Information");
-
-		foreach (Node child in UI_information.GetChildren())
-		{
-			child.QueueFree();
-		}
-
-		if (GameData.TYPES_ENUM.TryGetValue(select.GetType().Name, out int value))
-		{
-			switch (value)
-			{
-				case 0:
-					TowerManager tower = (TowerManager)select;
-					Node towerInformation = _towerInformation.Instantiate();
-					((TowerInformation)towerInformation).Initialize(tower);
-					UI_information.AddChild(towerInformation);
-					break;
-
-				case 1:
-					ShipManager ship = (ShipManager)select;
-					Node shipInformation = _shipInformation.Instantiate();
-					((ShipInformation)shipInformation).Initialize(ship);
-					UI_information.AddChild(shipInformation);
-					break;
-
-				default:
-					break;
-			}
-		}
 	}
-
 
 	public override void _Ready()
 	{
@@ -92,6 +60,11 @@ public partial class MapManager : Node2D
 		}
 	}
 
+
+	public override void _Process(double delta)
+	{
+		GameManager.instance.UpdateInformation(IsInstanceValid(_currentSelect) ? _currentSelect : null);
+	}
 
 	private void _OnEnemySpawnTimerTimeout()
 	{
@@ -127,13 +100,6 @@ public partial class MapManager : Node2D
 					}
 				}
 			}
-			// handle right click
-			if ((int)eventMouseButton.ButtonIndex == (int)MouseButton.Right && !eventMouseButton.Pressed)
-			{
-				// can be selected -> _currentSelect
-				Rect2 rect = new Rect2(new Vector2(0,0),new Vector2(128,128));
-				if (rect.HasPoint(mousePosition)) GD.Print("yes");
-			}	
 		}
 
 		// handle movement
