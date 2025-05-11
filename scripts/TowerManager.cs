@@ -57,15 +57,16 @@ public partial class TowerManager : Area2D
 	public void Initialize(MapManager mapManager, TowerData data)
 	{
 		_mapManager = mapManager;
+		TowerStat towerStats = GameData.GetTowerStatsByLevel(data.level);
 
-		_attackRate = data.attackRate;
-		_attackDamage = data.attackDamage;
-		_attackSpeed = data.attackSpeed;
-		name = data.name;
+		_attackRate = towerStats.attackRate;
+		_attackDamage = towerStats.attackDamage;
+		_attackSpeed = towerStats.attackSpeed;
+		name = $"{towerStats.name} {towerStats.level}";
 		GetNode<Sprite2D>("Base").Texture = data.sprite;
 
 		_fovAreaShape = GetNode<CollisionShape2D>("FOVArea2D/CollisionShape2D");
-		((CircleShape2D)_fovAreaShape.Shape).Radius = data.radius;
+		((CircleShape2D)_fovAreaShape.Shape).Radius = towerStats.radius;
 	}
 
 	public override void _Input(InputEvent @event)

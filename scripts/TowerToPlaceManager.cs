@@ -34,7 +34,8 @@ public partial class TowerToPlaceManager : Node2D
 
 	public void SetTowerData(TowerData data)
 	{
+		TowerStat towerStats = GameData.GetTowerStatsByLevel(data.level);
 		GetNode<Sprite2D>("Base").Texture = data.sprite;
-		_SetRadius(data.radius);
+		_SetRadius(towerStats.radius);
 	}
 }

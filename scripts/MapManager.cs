@@ -48,16 +48,19 @@ public partial class MapManager : Node2D
 
 		foreach (TowerData data in _towerData)
 		{
-			TextureButton c = (TextureButton)_towerButtonAsset.Instantiate();
-			c.GetNode<TextureRect>("Control/Base").Texture = data.sprite;
-			c.GetNode<Label>("CoinsLabel").Text = $"{data.cost}";
+			TowerStat towerStats = GameData.GetTowerStatsByLevel(data.level);
+			TextureButton towerButtonAsset = (TextureButton)_towerButtonAsset.Instantiate();
 
-			c.Connect(TextureButton.SignalName.Pressed, Callable.From(() => _OnTowerButtonMousePressed(data)));
-			c.Connect(TextureButton.SignalName.MouseEntered, Callable.From(_OnTowerButtonMouseEntered));
-			c.Connect(TextureButton.SignalName.MouseExited, Callable.From(_OnTowerButtonMouseExited));
+			towerButtonAsset.GetNode<TextureRect>("Control/Base").Texture = data.sprite;
+			towerButtonAsset.GetNode<Label>("CoinsLabel").Text = $"{towerStats.cost}";
 
-			towersButton.AddChild(c);
+			towerButtonAsset.Connect(TextureButton.SignalName.Pressed, Callable.From(() => _OnTowerButtonMousePressed(data)));
+			towerButtonAsset.Connect(TextureButton.SignalName.MouseEntered, Callable.From(_OnTowerButtonMouseEntered));
+			towerButtonAsset.Connect(TextureButton.SignalName.MouseExited, Callable.From(_OnTowerButtonMouseExited));
+
+			towersButton.AddChild(towerButtonAsset);
 		}
+
 	}
 
 
@@ -94,7 +97,10 @@ public partial class MapManager : Node2D
 			{
 				if (_towerHasValidPlacement && _isBuilding && _canPlaceTower)
 				{
-					if (GameManager.instance.BuyTower(_towerToPlaceData.cost))
+
+					TowerStat towerStats = GameData.GetTowerStatsByLevel(_towerToPlaceData.level);
+
+					if (GameManager.instance.BuyTower(towerStats.cost))
 					{
 						_PlaceTower(_RoundPositionToTilmap(mousePosition));
 					}
@@ -141,7 +147,9 @@ public partial class MapManager : Node2D
 
 	private void _OnTowerButtonMousePressed(TowerData data)
 	{
-		if (GameManager.instance.CanBuyTower(data.cost))
+		TowerStat towerStats = GameData.GetTowerStatsByLevel(data.level);
+
+		if (GameManager.instance.CanBuyTower(towerStats.cost))
 		{
 			_towerToPlace.SetTowerData(data);
 			_towerToPlaceData = data;

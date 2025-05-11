@@ -1,15 +1,10 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://b7g7ygclkuu1c"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://bbx5qusogi70y"]
 
 [ext_resource type="Script" uid="uid://bknglueyqgiqt" path="res://scripts/TowerData.cs" id="1_p3gne"]
-[ext_resource type="Texture2D" uid="uid://dpbson3he4f5x" path="res://assets/art/tile_13_2.png" id="2_o4wh5"]
+[ext_resource type="Texture2D" uid="uid://brdml03tej437" path="res://assets/towers/cannon_t2.png" id="2_o4wh5"]
 
 [resource]
 script = ExtResource("1_p3gne")
-attackRate = 0.5
-attackDamage = 2
-attackSpeed = 0.25
-radius = 300.0
-cost = 40
+level = "t2"
 sprite = ExtResource("2_o4wh5")
-name = "Canon T2"
 metadata/_custom_type_script = "uid://bknglueyqgiqt"
