@@ -123,8 +123,8 @@ public partial class TowerManager : Area2D
 	public override void _Draw()
 	{
 		if ((TowerManager)_mapManager.Get("_currentSelect") == this){
-			DrawCircle(new Vector2(0,0),35f,new Color(0,0,1,1), false, 1, true);
-			DrawCircle(new Vector2(0,0),35f,new Color(0,0,1,(float)0.2));
+			DrawCircle(new Vector2(0,0),35f,new Color("#00ADB5FF"), false, 1, true);
+			DrawCircle(new Vector2(0,0),35f,new Color("#00ADB555"));
 		}
 	}
 }

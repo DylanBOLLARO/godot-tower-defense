@@ -45,6 +45,8 @@ public partial class ShipManager : PathFollow2D
 
 	public override void _Process(double delta)
 	{
+		QueueRedraw();
+
 		_pathFollow.ProgressRatio  += (float)(delta * _speed * 0.03f);
 
 		if (_pathFollow.ProgressRatio >=1)
@@ -80,11 +82,21 @@ public partial class ShipManager : PathFollow2D
 
 	private void _OnMouseEntered()
 	{
+		GameManager.SetSelectedCursor();
 		_canBeSelected = true;
 	}
 
 	private void _OnMouseExited()
 	{
+		GameManager.SetBaseCursor();
 		_canBeSelected = false;
+	}
+
+	public override void _Draw()
+	{
+		if ((ShipManager)_mapManager.Get("_currentSelect") == this){
+			DrawCircle(new Vector2(0,0),45f,new Color("#00ADB5FF"), false, 1, true);
+			DrawCircle(new Vector2(0,0),45f,new Color("#00ADB555"));
+		}
 	}
 }
