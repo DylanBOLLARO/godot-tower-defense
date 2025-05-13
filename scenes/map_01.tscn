@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://by03opvikbu1f"]
+[gd_scene load_steps=21 format=4 uid="uid://by03opvikbu1f"]
 
 [ext_resource type="Script" uid="uid://c5aducwdu6km2" path="res://scripts/MapManager.cs" id="1_0mqyo"]
 [ext_resource type="Texture2D" uid="uid://b246exjsmofot" path="res://assets/tiles/tiles_sheet.png" id="1_gs3qo"]
@@ -11,9 +11,6 @@
 [ext_resource type="Resource" uid="uid://dbj8v25uirfh7" path="res://data/ship_03.tres" id="6_8k8sd"]
 [ext_resource type="PackedScene" uid="uid://b5b856l51agqt" path="res://assets/scenes/Tower-ToPlace.tscn" id="6_22d4a"]
 [ext_resource type="Resource" uid="uid://b7bomyi0hrd05" path="res://data/tower_01.tres" id="7_8k8sd"]
-[ext_resource type="Resource" uid="uid://bbx5qusogi70y" path="res://data/tower_02.tres" id="8_rhv8t"]
-[ext_resource type="Resource" uid="uid://biq1iy27ig4mg" path="res://data/tower_03.tres" id="10_6pepm"]
-[ext_resource type="Resource" uid="uid://bepvvldhbq5m6" path="res://data/tower_04.tres" id="11_cpvo5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a3cfv"]
 texture = ExtResource("1_gs3qo")
@@ -1809,7 +1806,7 @@ _shipAsset = ExtResource("2_a3cfv")
 _towerAsset = ExtResource("3_22d4a")
 _towerButtonAsset = ExtResource("4_rhv8t")
 _shipData = Array[Object]([ExtResource("4_i40je"), ExtResource("5_q5owf"), ExtResource("6_8k8sd")])
-_towerData = Array[Object]([ExtResource("7_8k8sd"), ExtResource("8_rhv8t"), ExtResource("10_6pepm"), ExtResource("11_cpvo5")])
+_towerData = Array[Object]([ExtResource("7_8k8sd")])
 
 [node name="Tilemaps" type="Node2D" parent="."]
 

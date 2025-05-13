@@ -12,13 +12,13 @@ public partial class GameManager : Node2D
 	private Label _livesLabel;
 	private int _coins = 100;
 	private int _lives = 50;
-	private TextureRect _ui_information;
+	private Control _ui_choice_of_towers;
 
 	public override void _Ready()
 	{
 		instance = this;
 
-		_ui_information = GetNode<TextureRect>("/root/Game/CanvasLayer/UI/Information");
+		_ui_choice_of_towers = GetNode<Control>("/root/Game/CanvasLayer/UI/TowersData");
 		_coinsLabel = GetNode<Label>("CanvasLayer/UI/CoinsBG/HBoxContainer/CoinsLabel");
 		_livesLabel = GetNode<Label>("CanvasLayer/UI/LivesBG/HBoxContainer/LivesLabel");
 
@@ -29,18 +29,13 @@ public partial class GameManager : Node2D
 		_coinsLabel.Text = $"{_coins}";
 		_livesLabel.Text = $"{_lives}";
 	}
-
-	private void _ResetUiInformation()
+	
+	public void UpdateInformation(Node2D data)
 	{
-		foreach (Node child in _ui_information.GetChildren())
+		foreach (Node child in _ui_choice_of_towers.GetChildren())
 		{
 			child.QueueFree();
 		}
-	}
-
-	public void UpdateInformation(Node2D data)
-	{
-		_ResetUiInformation();
 
 		if (data == null) return;
 
@@ -52,14 +47,14 @@ public partial class GameManager : Node2D
 					TowerManager tower = (TowerManager)data;
 					Node towerInformation = _towerInformation.Instantiate();
 					((TowerInformation)towerInformation).Initialize(tower);
-					_ui_information.AddChild(towerInformation);
+					_ui_choice_of_towers.AddChild(towerInformation);
 					break;
 
 				case 1:
 					ShipManager ship = (ShipManager)data;
 					Node shipInformation = _shipInformation.Instantiate();
 					((ShipInformation)shipInformation).Initialize(ship);
-					_ui_information.AddChild(shipInformation);
+					_ui_choice_of_towers.AddChild(shipInformation);
 					break;
 
 				default:

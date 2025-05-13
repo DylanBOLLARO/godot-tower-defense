@@ -32,6 +32,7 @@ public partial class MapManager : Node2D
 	public void SetCurrentSelect(Node2D select)
 	{
 		_currentSelect = select;
+		GameManager.instance.UpdateInformation(select);
 	}
 
 	public override void _Ready()
@@ -44,7 +45,7 @@ public partial class MapManager : Node2D
 		SetIsBuilding(false);
 
 		// dynamically connect UI tower buttons to placing logic
-		Control towersButton = GetNode<Control>("/root/Game/CanvasLayer/UI/CreateTowerButtons/VBoxContainer");
+		Control towersButton = GetNode<Control>("/root/Game/CanvasLayer/UI/ChoiceOfTowers/HBoxContainer");
 
 		foreach (TowerData data in _towerData)
 		{
@@ -64,10 +65,6 @@ public partial class MapManager : Node2D
 	}
 
 
-	public override void _Process(double delta)
-	{
-		GameManager.instance.UpdateInformation(IsInstanceValid(_currentSelect) ? _currentSelect : null);
-	}
 
 	private void _OnEnemySpawnTimerTimeout()
 	{
@@ -127,6 +124,11 @@ public partial class MapManager : Node2D
 		((TowerManager)tower).Initialize(this, _towerToPlaceData);
 		SetIsBuilding(false);
 		SetCurrentSelect(tower);
+    }
+
+    public void _UpgradeLevelTower(Node2D tower, TowerData data)
+    {
+		((TowerManager)tower).Initialize(this, data);
     }
 
     public void SetIsBuilding(bool isBuilding)

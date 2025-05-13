@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba7vjhenfdnrw"]
+
+[ext_resource type="Texture2D" uid="uid://dlj5g7c5tpdi0" path="res://assets/art/ship_03.png" id="1_qq2nk"]
+
+[node name="UpgradeTowerButton" type="TextureButton"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 128.0
+offset_bottom = 27.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_right = 126.0
+offset_bottom = 23.0
+text = "Uppgrade tower"
+
+[node name="Sprite" type="TextureRect" parent="."]
+offset_left = -50.0
+offset_top = 25.0
+offset_right = 16.0
+offset_bottom = 138.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_qq2nk")
+stretch_mode = 2
+
+[node name="Stats" type="VBoxContainer" parent="."]
+offset_left = 14.0
+offset_top = 26.0
+offset_right = 199.0
+offset_bottom = 113.0
+theme_override_constants/separation = 0

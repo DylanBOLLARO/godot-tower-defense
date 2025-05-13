@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameData="*res://scripts/GameData.cs"
+SColors="*res://singletons/SColors.cs"
 
 [display]
 

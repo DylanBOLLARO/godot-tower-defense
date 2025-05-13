@@ -14,14 +14,16 @@ public partial class TowerManager : Area2D
 
 	private Node2D _currentTarget;
 
+	private TowerStat _towerStats;
+
 	public string name;
 
 
 
 	// tower parameters
-	private float _attackRate = 1f;
-	private int _attackDamage = 1;
-	private float _attackSpeed = 0.25f;
+	private float _attackRate;
+	private int _attackDamage;
+	private float _attackSpeed;
 	private float _attackDelay;
 	private bool _canBeSelected;
 
@@ -57,7 +59,9 @@ public partial class TowerManager : Area2D
 	public void Initialize(MapManager mapManager, TowerData data)
 	{
 		_mapManager = mapManager;
+
 		TowerStat towerStats = GameData.GetTowerStatsByLevel(data.level);
+		_towerStats = towerStats;
 
 		_attackRate = towerStats.attackRate;
 		_attackDamage = towerStats.attackDamage;
@@ -67,6 +71,11 @@ public partial class TowerManager : Area2D
 
 		_fovAreaShape = GetNode<CollisionShape2D>("FOVArea2D/CollisionShape2D");
 		((CircleShape2D)_fovAreaShape.Shape).Radius = towerStats.radius;
+	}
+
+	public TowerStat GetTowerStats()
+	{
+		return  _towerStats;
 	}
 
 	public override void _Input(InputEvent @event)
@@ -128,4 +137,22 @@ public partial class TowerManager : Area2D
 			DrawCircle(new Vector2(0,0),35f,new Color("#00ADB555"));
 		}
 	}
+
+	public void UpgradeLevelOfTower()
+    {
+		TowerStat towerStats = GameData.GetTowerStatsByLevel(_towerStats.level+1);
+		GD.Print(_towerStats.level+1);
+		_towerStats = towerStats;
+
+		_attackRate = towerStats.attackRate;
+		_attackDamage = towerStats.attackDamage;
+		_attackSpeed = towerStats.attackSpeed;
+		name = $"{towerStats.name} {towerStats.level}";
+		GetNode<Sprite2D>("Base").Texture = _towerStats.sprite;
+
+		_fovAreaShape = GetNode<CollisionShape2D>("FOVArea2D/CollisionShape2D");
+		((CircleShape2D)_fovAreaShape.Shape).Radius = towerStats.radius;
+
+		_mapManager.SetCurrentSelect(this);
+    }
 }
