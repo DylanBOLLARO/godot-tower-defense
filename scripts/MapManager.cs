@@ -45,7 +45,7 @@ public partial class MapManager : Node2D
 		SetIsBuilding(false);
 
 		// dynamically connect UI tower buttons to placing logic
-		Control towersButton = GetNode<Control>("/root/Game/CanvasLayer/UI/ChoiceOfTowers/HBoxContainer");
+		HBoxContainer towersButton = GetNode<HBoxContainer>("/root/Game/CanvasLayer/UI/VBoxContainer/ChoiceOfTowers/MarginContainer/HBoxContainer");
 
 		foreach (TowerData data in _towerData)
 		{
@@ -94,7 +94,6 @@ public partial class MapManager : Node2D
 			{
 				if (_towerHasValidPlacement && _isBuilding && _canPlaceTower)
 				{
-
 					TowerStat towerStats = GameData.GetTowerStatsByLevel(_towerToPlaceData.level);
 
 					if (GameManager.instance.BuyTower(towerStats.cost))

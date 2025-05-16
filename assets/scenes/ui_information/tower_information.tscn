@@ -4,18 +4,16 @@
 [ext_resource type="Script" uid="uid://cdoniv0kvnlnh" path="res://assets/scenes/ui_information/TowerInformation.cs" id="1_u1qhn"]
 
 [node name="TowerInformation" type="Control"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 3
-anchor_right = 0.171
-anchor_bottom = 0.166
-offset_right = -0.320007
-offset_bottom = -0.280014
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 328.0
+offset_bottom = 218.0
 mouse_filter = 1
 script = ExtResource("1_u1qhn")
 
 [node name="BaseInformation" parent="." instance=ExtResource("1_o60ji")]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
-offset_right = 378.0
-offset_bottom = 158.0
+offset_right = 326.0
+offset_bottom = 218.0

@@ -18,9 +18,9 @@ public partial class GameManager : Node2D
 	{
 		instance = this;
 
-		_ui_choice_of_towers = GetNode<Control>("/root/Game/CanvasLayer/UI/TowersData");
-		_coinsLabel = GetNode<Label>("CanvasLayer/UI/CoinsBG/HBoxContainer/CoinsLabel");
-		_livesLabel = GetNode<Label>("CanvasLayer/UI/LivesBG/HBoxContainer/LivesLabel");
+		_ui_choice_of_towers = GetNode<Control>("/root/Game/CanvasLayer/UI/VBoxContainer/TowersData");
+		_coinsLabel = GetNode<Label>("CanvasLayer/UI/HBoxContainer/CoinsBG/HBoxContainer/CoinsLabel");
+		_livesLabel = GetNode<Label>("CanvasLayer/UI/HBoxContainer/LivesBG/HBoxContainer/LivesLabel");
 
 		_UpdateUI();
 	}

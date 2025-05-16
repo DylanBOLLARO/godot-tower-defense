@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://qphpcxwwilbw"]
 
-[ext_resource type="Texture2D" uid="uid://br8lj18swwe6w" path="res://assets/ui/ui_tower_data.png" id="1_mcqbk"]
-[ext_resource type="Texture2D" uid="uid://dlj5g7c5tpdi0" path="res://assets/art/ship_03.png" id="2_fop11"]
+[ext_resource type="Texture2D" uid="uid://cppln68xgycpb" path="res://assets/ui/ui_info_tower.png" id="1_mcqbk"]
+[ext_resource type="Texture2D" uid="uid://b16l7vdcjf11v" path="res://assets/towers/cannon_t5.png" id="2_mcqbk"]
 
 [node name="BaseInformation" type="Control"]
 layout_mode = 3
@@ -16,13 +16,14 @@ texture = ExtResource("1_mcqbk")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 15.0
-offset_right = 301.0
-offset_bottom = 48.0
-theme_override_colors/font_color = Color(0, 0, 0, 0.784314)
+offset_left = 15.0
+offset_top = 12.0
+offset_right = 311.0
+offset_bottom = 49.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.392157)
 theme_override_font_sizes/font_size = 24
 text = "ShipInformation"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite" type="TextureRect" parent="."]
@@ -32,7 +33,7 @@ offset_top = 68.0
 offset_right = 112.0
 offset_bottom = 181.0
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_fop11")
+texture = ExtResource("2_mcqbk")
 stretch_mode = 2
 
 [node name="Stats" type="VBoxContainer" parent="."]

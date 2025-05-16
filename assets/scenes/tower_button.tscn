@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://5okck1ayloro"]
 
-[ext_resource type="Texture2D" uid="uid://cpvn7bcq3u0lk" path="res://assets/art/coinGold.png" id="1_00ap1"]
+[ext_resource type="Texture2D" uid="uid://v73eydao4sbf" path="res://assets/art/coinGold.png" id="1_00ap1"]
 [ext_resource type="Texture2D" uid="uid://dga6llb2615nn" path="res://assets/ui/ui_tower_card_hover.png" id="1_ab74j"]
 [ext_resource type="Texture2D" uid="uid://dwhogw46sfjv4" path="res://assets/ui/ui_tower_card_base.png" id="1_kllj5"]
 [ext_resource type="Texture2D" uid="uid://d264840xxi81r" path="res://assets/art/cannon.png" id="3_ab74j"]

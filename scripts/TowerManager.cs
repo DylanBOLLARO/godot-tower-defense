@@ -141,7 +141,6 @@ public partial class TowerManager : Area2D
 	public void UpgradeLevelOfTower()
     {
 		TowerStat towerStats = GameData.GetTowerStatsByLevel(_towerStats.level+1);
-		GD.Print(_towerStats.level+1);
 		_towerStats = towerStats;
 
 		_attackRate = towerStats.attackRate;
